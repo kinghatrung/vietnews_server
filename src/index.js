@@ -3,8 +3,6 @@ const morgan = require("morgan");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-
-// import Router
 const articleRouter = require("./routes/article");
 const genreRouter = require("./routes/genre");
 const authRouter = require("./routes/auth");

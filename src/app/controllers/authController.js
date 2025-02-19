@@ -20,21 +20,18 @@ const authController = {
         articles,
       } = req.body;
 
-      // Check if username or password is missing
       if (!username || !password) {
         return res
           .status(400)
           .json("Username và password không được để trống!");
       }
 
-      // Check if username length is between 5 and 24 characters
       if (username.length < 5 || username.length > 24) {
         return res
           .status(400)
           .json("Username phải có ít nhất 5 ký tự và nhiều nhất 24 ký tự!");
       }
 
-      // Check if password length is less than 6 characters
       if (password.length < 5) {
         return res.status(400).json("Password phải có ít nhất 5 ký tự!");
       }

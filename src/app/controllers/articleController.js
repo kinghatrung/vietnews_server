@@ -103,18 +103,23 @@ const articleController = {
   searchArticle: async (req, res) => {
     try {
       const { query } = req.query;
-      const articles = await Article.find({
+      if (!query) {
+        return res
+          .status(400)
+          .json({ message: "Vui lòng nhập từ khóa tìm kiếm" });
+      }
+
+      const searchQuery = {
         $or: [
           { name: { $regex: query, $options: "i" } },
           { subDescription: { $regex: query, $options: "i" } },
         ],
-      });
-      if (articles.length === 0) {
-        return res.status(404).json({ message: "Không tìm thấy bài báo nào" });
-      }
+      };
+
+      const articles = await Article.find(searchQuery);
       res.status(200).json(articles);
     } catch (err) {
-      res.status(500).json("Lỗi gì đó");
+      res.status(500).json(err);
     }
   },
 };

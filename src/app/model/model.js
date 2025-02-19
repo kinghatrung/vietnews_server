@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema(
     nickname: {
       type: String,
     },
+    bio: {
+      type: String,
+    },
     address: { type: String },
     avatar: {
       type: String,

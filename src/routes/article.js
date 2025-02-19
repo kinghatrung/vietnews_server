@@ -7,6 +7,9 @@ router.post("/", articleController.addAArticle);
 //GET ALL ARTICLE
 router.get("/", articleController.getAllArticle);
 
+// SEARCH ARTICLE
+router.get("/search_articles", articleController.searchArticle);
+
 //GET A ARTICLE
 router.get("/:id", articleController.getArticle);
 
@@ -15,8 +18,5 @@ router.put("/:id", articleController.updateArticle);
 
 // DELETE A ARTICLE
 router.delete("/:id", articleController.deleteArticle);
-
-// SEARCH ARTICLE
-router.get("/search", articleController.searchArticle);
 
 module.exports = router;
